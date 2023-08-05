@@ -52,7 +52,7 @@ export class UserRepository {
   };
 
   correoTextEnCola = (email, resetToken) => {
-    const resetLink = `http://localhost:8080/Reset/${resetToken}`;
+    const resetLink = `https://e-commerce-jesus.vercel.app/Reset/${resetToken}`;
     return {
       from: '"Supermercado 👻" <jesusarnaldo115@gmail.com>',
       to: email,

@@ -59,7 +59,7 @@
 
     document.getElementById("spinner").style.display = "block";
 
-    fetch("http://localhost:8080/api/sessions/cambiar", {
+    fetch("https://e-commerce-jesus.vercel.app/api/sessions/cambiar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -68,7 +68,7 @@
     })
         .then((response) => {
             if (response.ok) {
-                window.location.href = "http://localhost:8080/login";
+                window.location.href = "https://e-commerce-jesus.vercel.app/login";
             } else {
                 response.json().then((data) => {
                     document.getElementById("error").innerText = data.error;

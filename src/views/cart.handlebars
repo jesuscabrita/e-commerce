@@ -128,7 +128,7 @@
 const payButton = document.getElementById('payButton');
     payButton.addEventListener('click', async () => {
         const cartId = document.querySelector('.cart-container').getAttribute('data-carritoid');
-        const paymentUrl = `http://localhost:8080/pago/${cartId}`;
+        const paymentUrl = `https://e-commerce-jesus.vercel.app/pago/${cartId}`;
         window.location.href = paymentUrl;
     });
 </script>

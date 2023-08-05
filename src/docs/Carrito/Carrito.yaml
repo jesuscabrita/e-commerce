@@ -148,7 +148,7 @@ components:
               description: "de gallina"
               price: 3.4
               thumbnail:
-                - "http://localhost:8080/images/1681753629593-descarga.jpeg"
+                - "https://e-commerce-jesus.vercel.app/images/1681753629593-descarga.jpeg"
               code: "SINCODIGO1"
               stock: 6
               status: true

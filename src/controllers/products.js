@@ -27,7 +27,7 @@ export const getProductsById = async (req, res) => {
 export const addProducts = async (req, res) => {
     try {
         const { title, description, price, code, stock, category } = req.body;
-        const thumbnailUrl = req?.files?.map(file => `http://localhost:8080/images/${file.filename}`)
+        const thumbnailUrl = req?.files?.map(file => `https://e-commerce-jesus.vercel.app/images/${file.filename}`)
         const currentUser = req.session.user
         const newProduct = await productService.addProduct(
             title, description, price, thumbnailUrl, code, stock, category, currentUser
@@ -41,7 +41,7 @@ export const addProducts = async (req, res) => {
 export const editProducts = async (req, res) => {
     const productId = req.params.id;
     const changes = req.body;
-    const thumbnailUrl = req?.files?.map(file => `http://localhost:8080/images/${file.filename}`)
+    const thumbnailUrl = req?.files?.map(file => `https://e-commerce-jesus.vercel.app/images/${file.filename}`)
     // if (!thumbnailUrl) {
     //     return res.status(400).send({ status: "Error", error: "No se envio niguna imagen!!" });
     // }

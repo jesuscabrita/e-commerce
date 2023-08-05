@@ -66,7 +66,7 @@ export class TicketRepository {
                 <p>su compra fue realizada</p>
                 <p>por un monto total de:$ ${ticket.amount}</p>
                 <p>Gracias por su compra</p>
-                <a href="http://localhost:8080/ticket/${ticket.userID}" style="background: rgb(31 41 55); color: #f9f8f8;height: 30px;border-radius: 8px;padding: 8px;cursor: pointer;display: flex;align-items: center;">Su ticket aca</a>
+                <a href="https://e-commerce-jesus.vercel.app/ticket/${ticket.userID}" style="background: rgb(31 41 55); color: #f9f8f8;height: 30px;border-radius: 8px;padding: 8px;cursor: pointer;display: flex;align-items: center;">Su ticket aca</a>
                 <p>Saludos cordiales</p>
                 </div>
             </body>

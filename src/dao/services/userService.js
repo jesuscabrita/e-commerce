@@ -278,7 +278,7 @@ export class UserService {
             }
             const documentsToAdd = files.map(file => ({
                 name: file.originalname, 
-                reference: `http://localhost:8080/images/${file.filename}`
+                reference: `https://e-commerce-jesus.vercel.app/images/${file.filename}`
             }));
             user.documents.push(...documentsToAdd);
             await user.save();

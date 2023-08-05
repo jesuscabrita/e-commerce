@@ -234,7 +234,7 @@
         const overlay = document.getElementById('overlay');
         overlay.style.display = 'block';
 
-        const response = await fetch('http://localhost:8080/charge/' + usercartID, {
+        const response = await fetch('https://e-commerce-jesus.vercel.app/charge/' + usercartID, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

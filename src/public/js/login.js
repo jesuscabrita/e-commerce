@@ -41,5 +41,5 @@ form.addEventListener("submit", async (e) => {
 });
 
 function redirectToPasswordReset() {
-    window.location.href = 'http://localhost:8080/solicitud';
+    window.location.href = 'https://e-commerce-jesus.vercel.app/solicitud';
 }

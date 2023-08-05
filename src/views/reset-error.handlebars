@@ -49,14 +49,14 @@
 
         var xhr = new XMLHttpRequest();
 
-        xhr.open('POST', 'http://localhost:8080/api/sessions/solicitar', true);
+        xhr.open('POST', 'https://e-commerce-jesus.vercel.app/api/sessions/solicitar', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
 
         xhr.onload = function() {
             loader.style.display = 'none'; 
 
             if (xhr.status === 200) {
-                window.location.href = 'http://localhost:8080/login'; 
+                window.location.href = 'https://e-commerce-jesus.vercel.app/login'; 
             } else {
                 document.getElementById('error').textContent = 'Error en la solicitud. Inténtalo de nuevo.'; 
             }

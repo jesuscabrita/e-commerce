@@ -101,7 +101,7 @@
         var selectElement = document.querySelector(`select[name="role"][data-user="${userId}"]`);
         var selectedRole = selectElement.value;
 
-        fetch(`http://localhost:8080/api/sessions/premium/${userId}`, {
+        fetch(`https://e-commerce-jesus.vercel.app/api/sessions/premium/${userId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -128,7 +128,7 @@
     function eliminarUsuario(userId) {
         var confirmacion = confirm("¿Estás seguro que deseas eliminar este usuario?");
         if (confirmacion) {
-            fetch(`http://localhost:8080/api/sessions/${userId}`, {
+            fetch(`https://e-commerce-jesus.vercel.app/api/sessions/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -154,7 +154,7 @@
 
         var confirmacion = confirm("¿Estás seguro que deseas eliminar los usuarios sin conexión?");
         if (confirmacion) {
-            fetch(`http://localhost:8080/api/users/sinconexion`, {
+            fetch(`https://e-commerce-jesus.vercel.app/api/users/sinconexion`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
