@@ -131,4 +131,20 @@ const payButton = document.getElementById('payButton');
         const paymentUrl = `https://e-commerce-jesus.vercel.app/pago/${cartId}`;
         window.location.href = paymentUrl;
     });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const cartContainer = document.querySelector(".cart-container");
+        const cartItems = cartContainer.querySelectorAll(".card");
+        const buyButton = document.getElementById("buyButton");
+
+        if (cartItems.length === 0) {
+            const noProductsAlert = document.createElement("p");
+            noProductsAlert.textContent = "No hay productos en el carrito";
+            cartContainer.appendChild(noProductsAlert);
+
+            buyButton.style.display = "none";
+        } else {
+            buyButton.style.display = "block";
+        }
+    });
 </script>
