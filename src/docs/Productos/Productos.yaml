@@ -1,0 +1,231 @@
+paths:
+  /api/products:
+    get:
+      summary: Obtiene todos los productos
+      tags:
+        - Productos
+      responses:
+        "200":
+          description: Los productos fueron obtenidos exitosamente!
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/productsModel"
+        "500":
+          description: Error al obtener los productos. Usualmente es debido a un error en la conexión con la base de datos
+
+    post:
+      summary: Crea un nuevo producto
+      tags:
+        - Productos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/schemas/createProductRequest"
+      responses:
+        "200":
+          description: El producto fue creado exitosamente!
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/productsModel"
+        "500":
+          description: Error al crear los productos. Usualmente es debido a un error en la conexión con la base de datos
+
+  /api/products/{pid}:
+    get:
+      summary: Obtiene un solo producto a partir de su _id
+      tags:
+        - Productos
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: _id del producto que se desea solicitar
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Producto Encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/productsModel"
+        "500":
+          description: Error al encontrar el producto. Usualmente es debido a un error en la conexión con la base de datos
+  
+    put:
+      summary: Actualiza un producto a partir de su Id
+      tags:
+        - Productos
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: _id del producto que se desea actualizar
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/updateProductos"
+      responses:
+        "200":
+          description: Producto actualizado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/productsModel"
+        "500":
+          description: Error al actualizar el producto. Usualmente es debido a un error en la conexión con la base de datos
+
+    delete:
+      summary: Elimina un producto a partir de su Id
+      tags:
+        - Productos
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: _id del producto que se desea eliminar
+          schema:
+            type: string
+      responses:
+        "200":
+          description: El producto fue eliminado correctamente
+        "500":
+          description: Error al eliminar el producto. Usualmente es debido a un error en la conexión con la base de datos
+
+components:
+  schemas:
+    createProductRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Nombre del producto
+          example: Queso
+        description:
+          type: string
+          description: Descripcion del producto
+          example: Queso llanero
+        price:
+          type: number
+          description: Precio del producto
+          example: 1000
+        code:
+          type: string
+          description: Codigo del producto
+          example: CODIGO1234
+        stock:
+          type: number
+          description: La cantidad de productos que hay
+          example: 40
+        category:
+          type: string
+          description: que tipo de categoria pertenece el producto
+          example: Comida
+      required:
+        - title
+        - description
+        - price
+        - code
+        - stock
+        - category
+
+    productsModel:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Id autogenerado de mongo
+        title:
+          type: string
+          description: Nombre del producto
+        description:
+          type: string
+          description: Descripcion del producto
+        price:
+          type: number
+          description: Precio del producto
+        thumbnail:
+          type: array
+          items:
+            type: string
+          description: Un array de imagenes del producto
+        code:
+          type: string
+          description: Codigo del producto
+        stock:
+          type: number
+          description: La cantidad de productos que hay
+        status:
+          type: boolean
+          description: si el producto existe o no
+        category:
+          type: string
+          description: que tipo de categoria pertenece el producto
+        owner:
+          type: string
+          description: el correo de quien creo el producto
+      example:
+        _id: ObjectId("as35f3as54d3v51ad3f5g454315")
+        title: Queso
+        description: Queso llanero
+        price: 1000
+        thumbnail: [queso.png]
+        code: CODIGO1234
+        stock: 40
+        status: true
+        category: Comida
+        owner: jesusarnaldo115@gmail.com
+
+  requestBodies:
+    updateProductos:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Nombre del producto
+        description:
+          type: string
+          description: Descripcion del producto
+        price:
+          type: number
+          description: Precio del producto
+        thumbnail:
+          type: array
+          items:
+            type: string
+          description: Un array de imagenes del producto
+        code:
+          type: string
+          description: Codigo del producto
+        stock:
+          type: number
+          description: La cantidad de productos que hay
+        status:
+          type: boolean
+          description: si el producto existe o no
+        category:
+          type: string
+          description: que tipo de categoria pertenece el producto
+        owner:
+          type: string
+          description: el correo de quien creo el producto
+      example:
+        title: Queso
+        description: Queso llanero
+        price: 1000
+        thumbnail: [queso.png]
+        code: CODIGO1234
+        stock: 40
+        status: true
+        category: Comida
+        owner: jesusarnaldo115@gmail.com

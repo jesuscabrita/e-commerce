@@ -1,0 +1,26 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "src/index.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "src/index.js"
+        }
+    ],
+    "env": {
+        "PORT": "8080",
+        "MONGODB": "mongodb+srv://jesusarnaldo115:22338932@cluster0.pkwdkim.mongodb.net/ecommerce",
+        "SESSION_SECRET": "jdhfgsje",
+        "NODE_ENV": "development",
+        "EMAIL_USERNAME": "jesusarnaldo115@gmail.com",
+        "EMAIL_PASSWORD": "zkgcmsobbcamxusv",
+        "PORT_EMAIL": "587",
+        "HOST_EMAIL": "smtp.gmail.com",
+        "STRIPESECRETKEY": "sk_test_51NbQJVK8VQreyVwzF1ff9ve1ZkmCFYEpyrfdTlCNwevxwI9Ttd04cZ2sRLzOX50bOG11IwmGlUwpGn62bs63RBYY00EdW8MGCs"
+    }
+}

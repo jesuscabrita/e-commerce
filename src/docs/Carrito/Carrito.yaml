@@ -1,0 +1,214 @@
+paths:
+  /api/carts:
+    get:
+      summary: Obtiene todos los carritos
+      tags:
+        - Carrito
+      responses:
+        "200":
+          description: Carritos obtenidos exitosamente!
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/cartsModel"
+        "500":
+          description: Error al obtener los Carritos. Usualmente es debido a un error en la conexión con la base de datos
+    post:
+      summary: Crea un nuevo carrito
+      tags:
+        - Carrito
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/schemas/createCartsRequest"
+      responses:
+        "200":
+          description: El carrito fue creado exitosamente!
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/cartsModel"
+        "500":
+          description: Error al crear el carrito. Usualmente es debido a un error en la conexión con la base de datos
+
+  /api/carts/{cid}:
+    get:
+      summary: Obtiene un solo carrito a partir de su _id
+      tags:
+        - Carrito
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: _id del carrito que se desea solicitar
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Carrito Encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/cartsModel"
+        "500":
+          description: Error al encontrar el carrito. Usualmente es debido a un error en la conexión con la base de datos
+
+  /api/carts/{cid}/product/{pid}:
+    post:
+      summary: Agrega un producto al carrito
+      tags:
+        - Carrito
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: _id del carrito al que se desea agregar el producto
+          schema:
+            type: string
+        - name: pid
+          in: path
+          required: true
+          description: _id del producto que se desea agregar al carrito
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Producto agregado exitosamente al carrito!
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/cartsModel"
+        "500":
+          description: Error al agregar el producto al carrito. Usualmente es debido a un error en la conexión con la base de datos
+
+  /api/carts/{cid}/products/{pid}:
+    delete:
+      summary: Elimina un producto del carrito
+      tags:
+        - Carrito
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: _id del carrito del que se desea eliminar el producto
+          schema:
+            type: string
+        - name: pid
+          in: path
+          required: true
+          description: _id del producto que se desea eliminar del carrito
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Producto eliminado exitosamente del carrito!
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/cartsModel"
+        "500":
+          description: Error al eliminar el producto del carrito. Usualmente es debido a un error en la conexión con la base de datos
+
+components:
+  schemas:
+    createCartsRequest:
+      type: object
+      properties:
+
+    cartsModel:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Id autogenerado de mongo
+        products:
+          type: array
+          description: Array de productos
+          items:
+            $ref: "#/components/schemas/productItem"
+        createdAt:
+          type: string
+          description: Fecha de creación del carrito
+        updatedAt:
+          type: string
+          description: Fecha de actualización del carrito
+        __v:
+          type: integer
+          description: Versión del documento
+      example:
+        _id: "643ea185c7e647c8058a97a5"
+        products:
+          - quantity: 6
+            product:
+              title: "huevos"
+              description: "de gallina"
+              price: 3.4
+              thumbnail:
+                - "http://localhost:8080/images/1681753629593-descarga.jpeg"
+              code: "SINCODIGO1"
+              stock: 6
+              status: true
+              category: "Comida"
+              _id: "643d861da60c3b35199a0c87"
+              createdAt: "2023-05-03T20:17:11.638Z"
+              updatedAt: "2023-05-03T20:17:11.638Z"
+              __v: 0
+            _id: "643f07aca9f5f8bde1cb9507"
+        createdAt: "2023-04-18T13:56:21.878Z"
+        updatedAt: "2023-05-03T20:17:11.638Z"
+        __v: 0
+
+    productItem:
+      type: object
+      properties:
+        quantity:
+          type: integer
+          description: Cantidad del producto
+        product:
+          $ref: "#/components/schemas/product"
+
+    product:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Título del producto
+        description:
+          type: string
+          description: Descripción del producto
+        price:
+          type: number
+          description: Precio del producto
+        thumbnail:
+          type: array
+          description: URL(s) de la imagen del producto
+          items:
+            type: string
+        code:
+          type: string
+          description: Código del producto
+        stock:
+          type: integer
+          description: Stock del producto
+        status:
+          type: boolean
+          description: Estado del producto
+        category:
+          type: string
+          description: Categoría del producto
+        _id:
+          type: string
+          description: Id del producto
+        createdAt:
+          type: string
+          description: Fecha de creación del producto
+        updatedAt:
+          type: string
+          description: Fecha de actualización del producto
+        __v:
+          type: integer
+          description: Versión del documento
