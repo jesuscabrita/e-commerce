@@ -93,7 +93,6 @@
         } finally {
             overlay.style.display = 'none';
         }
-
     }
 
     const deleteButtons = document.querySelectorAll('button[data-deleteproduct]');
@@ -113,7 +112,6 @@
                     const errorData = await response.json();
                     throw new Error(errorData.error);
                 }
-
                 const data = await response.json();
                 console.log('Producto eliminado del carrito:', data);
                 alert('Producto eliminado del carrito');

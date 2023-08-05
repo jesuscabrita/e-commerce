@@ -40,9 +40,7 @@
 <script>
     document.getElementById('passwordResetForm').addEventListener('submit', function(event) {
         event.preventDefault(); 
-
         var email = document.getElementById('form3Example3c').value; 
-
         var loader = document.getElementById('loader');
         loader.style.display = 'block'; 
 
@@ -60,9 +58,7 @@
                 document.getElementById('error').textContent = 'Error en la solicitud. Inténtalo de nuevo.'; 
             }
         };
-
         var data = JSON.stringify({ email: email });
-
         xhr.send(data);
     });
 </script>
